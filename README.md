@@ -2,9 +2,9 @@
 
 # NAMA ANGGOTA
 
--Dirga Wira Aditya 
--Mahesa Yudhistira 
--Rendy Fitra Adi Pratama 
+# Dirga Wira Aditya 1957051011 
+# Mahesa Yudhistira 1917051029
+# Rendy Fitra Adi Pratama 1917051041
 
 # CLASS DIAGRAM
 ```mermaid

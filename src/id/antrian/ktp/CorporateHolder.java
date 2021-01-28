@@ -14,20 +14,20 @@ import javafx.beans.property.StringProperty;
 
 
 public class CorporateHolder extends AccountHolder {
-    StringProperty pangkat;
+    StringProperty statusrek;
     
     public CorporateHolder(Integer holderID, String name, String address, String email, 
-            String pangkat) {
+            String statusrek) {
         super(holderID, name, address, email);
-        this.pangkat= new SimpleStringProperty(pangkat);
+        this.statusrek= new SimpleStringProperty(statusrek);
     }
 
-    public String getPangkat() {
-        return pangkat.get();
+    public String getStatusrek() {
+        return statusrek.get();
     }
 
-    public void setPangkat(String pangkat) {
-        this.pangkat.set(pangkat);
+    public void setStatusrek(String statusrek) {
+        this.statusrek.set(statusrek);
     }
 }
 

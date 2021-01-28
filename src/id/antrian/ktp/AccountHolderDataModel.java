@@ -47,7 +47,7 @@ public class AccountHolderDataModel {
 
         PreparedStatement stmtIndividual = conn.prepareStatement(insertIndividual);
         stmtIndividual.setInt(1, holder.getHolderID());
-        stmtIndividual.setString(2, holder.getJenjang());
+        stmtIndividual.setString(2, holder.getStatus());
         stmtIndividual.execute();
 
 
@@ -68,14 +68,14 @@ public class AccountHolderDataModel {
 
         PreparedStatement stmtIndividual = conn.prepareStatement(insertCorporate);
         stmtIndividual.setInt(1, holder.getHolderID());
-        stmtIndividual.setString(2, holder.getPangkat());
+        stmtIndividual.setString(2, holder.getStatusrek());
         stmtIndividual.execute();
 
     }
 
     public ObservableList<IndividualHolder> getIndividualHolder() throws SQLException {
         ObservableList<IndividualHolder> data = FXCollections.observableArrayList();
-        String sql = "SELECT `holder_id`, `name`, `address`, `email`, `jenjang`"
+        String sql = "SELECT `holder_id`, `name`, `address`, `email`, `status`"
                 + " FROM `accountholder` NATURAL JOIN `individualholder` "
                 + "ORDER BY `holder_id`";
         
@@ -89,7 +89,7 @@ public class AccountHolderDataModel {
     
     public ObservableList<CorporateHolder> getCorporateHolder() throws SQLException {
         ObservableList<CorporateHolder> guru = FXCollections.observableArrayList();
-        String sql = "SELECT `holder_id`, `name`, `address`, `email`, `pangkat`"
+        String sql = "SELECT `holder_id`, `name`, `address`, `email`, `statusrek`"
                 + " FROM `accountholder` NATURAL JOIN `corporateholder` "
                 + "ORDER BY `name`";
 
@@ -102,9 +102,9 @@ public class AccountHolderDataModel {
        return guru;
     }
     
-    public ObservableList<Class> getClassess(int holderID) {
-        ObservableList<Class> data = FXCollections.observableArrayList();
-        String sql = "SELECT `idclass`, `classname`, `tutor`, "
+    public ObservableList<Rekaman> getClassess(int holderID) {
+        ObservableList<Rekaman> data = FXCollections.observableArrayList();
+        String sql = "SELECT `idrek`, `classrek`, `perekam`, "
                 + " FROM `class` "
                 + "WHERE holder_id="+holderID;
 
@@ -112,14 +112,14 @@ public class AccountHolderDataModel {
         try {
             rs = conn.createStatement().executeQuery(sql);
             while (rs.next()) {
-                String sqlClass = "SELECT idclass, classname, tutor FROM class "
+                String sqlClass = "SELECT idrek, classrek, perekam FROM class "
                         + "WHERE holder_id=" + rs.getInt(1);
                 ResultSet rsClass = conn.createStatement().executeQuery(sqlClass);
-                ArrayList<Class> dataClass = new ArrayList<>();
+                ArrayList<Rekaman> dataClass = new ArrayList<>();
                 while (rsClass.next()) {
-                    dataClass.add(new Class(rsClass.getInt(1), rsClass.getString(2), rsClass.getString(3)));
+                    dataClass.add(new Rekaman(rsClass.getInt(1), rsClass.getString(2), rsClass.getString(3)));
                 }
-                data.add(new Class(rs.getInt(1), rs.getString(2), rs.getString(3)));
+                data.add(new Rekaman(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountHolderDataModel.class.getName()).log(Level.SEVERE, null, ex);
@@ -153,6 +153,7 @@ public class AccountHolderDataModel {
         while (rs.next()){
             return rs.getInt(1)+1;
         }
+        
         return 0;
     }
 }

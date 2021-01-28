@@ -13,20 +13,20 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class IndividualHolder extends AccountHolder{
-    public StringProperty jenjang;
+    public StringProperty status;
     
     public IndividualHolder(Integer holderID, String name, String address, String email,
-            String jenjang) {
+            String status) {
         super(holderID, name, address, email);
-        this.jenjang = new SimpleStringProperty(jenjang);
+        this.status = new SimpleStringProperty(status);
     }
 
-    public String getJenjang() {
-        return jenjang.get();
+    public String getStatus() {
+        return status.get();
     }
 
-    public void setJenjang(String jenjang) {
-        this.jenjang.set(jenjang);
+    public void setStatus(String status) {
+        this.status.set(status);
     }
 }
 

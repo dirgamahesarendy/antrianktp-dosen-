@@ -129,7 +129,7 @@ public class AccHolderFormController implements Initializable {
          tbnama.setCellValueFactory(new PropertyValueFactory<>("name"));
          tbalamat.setCellValueFactory(new PropertyValueFactory<>("address"));
          tbemail.setCellValueFactory(new PropertyValueFactory<>("email"));
-         tbjenjang.setCellValueFactory(new PropertyValueFactory<>("jenjang"));
+         tbjenjang.setCellValueFactory(new PropertyValueFactory<>("status"));
          tbview.setItems(null);
          tbview.setItems(data);
     }
@@ -141,7 +141,7 @@ public class AccHolderFormController implements Initializable {
          tbnama1.setCellValueFactory(new PropertyValueFactory<>("name"));
          tbalamat1.setCellValueFactory(new PropertyValueFactory<>("address"));
          tbemail1.setCellValueFactory(new PropertyValueFactory<>("email"));
-         tbjenjang1.setCellValueFactory(new PropertyValueFactory<>("pangkat"));
+         tbjenjang1.setCellValueFactory(new PropertyValueFactory<>("statusrek"));
          tbview1.setItems(null);
          tbview1.setItems(guru);
 
